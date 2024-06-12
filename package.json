@@ -1,0 +1,26 @@
+{
+  "name": "jchantcom",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sst dev --profile jackchant81-dev-admin",
+    "build": "sst build --profile jackchant81-dev-admin",
+    "deploy": "sst deploy --profile jackchant81-dev-admin --stage prod",
+    "remove": "sst remove --profile jackchant81-dev-admin",
+    "console": "sst console --profile jackchant81-dev-admin",
+    "typecheck": "tsc --noEmit",
+    "test": "sst bind vitest run"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "aws-cdk-lib": "2.132.1",
+    "constructs": "10.3.0",
+    "sst": "^2.43.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
