@@ -2,5 +2,9 @@
   "hosted-zone:account=654654428742:domainName=jchant.com:region=eu-west-1": {
     "Id": "/hostedzone/Z02405253QMJWHUEOFIKQ",
     "Name": "jchant.com."
+  },
+  "hosted-zone:account=654654428742:domainName=jchant.com:region=eu-west-2": {
+    "Id": "/hostedzone/Z02405253QMJWHUEOFIKQ",
+    "Name": "jchant.com."
   }
 }

@@ -18,8 +18,8 @@ export async function main() {
     const events = await calendar.events.list({
         calendarId: "jackchant81@gmail.com",
         timeMin: new Date().toISOString(),
-        maxResults: 10,
-        singleEvents: true,
+        maxResults: 250,
+        singleEvents: false, // collapse recurring events
         orderBy: "updated",
     });
 
