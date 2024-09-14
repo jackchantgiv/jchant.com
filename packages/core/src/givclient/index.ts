@@ -42,6 +42,11 @@ export class Index {
       {},
     ); // Empty body to POST
 
+    if (typeof regValue.value !== "boolean") {
+      console.log(regValue);
+      throw "Unexpected output from reading settings register";
+    }
+
     return regValue.value;
   }
   public async updateEcoMode(inverterSerial: string, ecoMode: boolean) {
