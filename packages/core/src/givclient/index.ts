@@ -43,8 +43,8 @@ export class Index {
     ); // Empty body to POST
 
     if (typeof regValue.value !== "boolean") {
-      console.log(regValue);
-      throw "Unexpected output from reading settings register";
+      console.log("Unexpected value:", regValue);
+      throw "Unexpected output from reading settings register: " + regValue;
     }
 
     return regValue.value;
