@@ -2,6 +2,7 @@ import { SSTConfig } from "sst";
 import { CalendarWeatherCleanupStack } from "./stacks/CalendarWeatherCleanupStack";
 import { FrontendStack } from "./stacks/FrontendStack";
 import { GitKitControllerStack } from "./stacks/GivKitControllerStack";
+import { SchoolIpalSyncStack } from "./stacks/SchoolIpalSyncStack";
 
 export default {
   config(_input) {
@@ -11,9 +12,14 @@ export default {
     };
   },
   stacks(app) {
+    app.setDefaultFunctionProps({
+      logRetention: "one_week",
+    });
+
     app
       .stack(CalendarWeatherCleanupStack)
       .stack(GitKitControllerStack)
-      .stack(FrontendStack);
+      .stack(FrontendStack)
+      .stack(SchoolIpalSyncStack);
   },
 } satisfies SSTConfig;
