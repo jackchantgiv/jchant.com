@@ -17,7 +17,24 @@ export class Index {
     });
 
     if (retValue.ok) {
-      return ((await retValue.json()) as any)?.data;
+      const data = ((await retValue.json()) as any)?.data;
+
+      // timeout so try a single retry
+      if (data?.value === -1) {
+        const retValue = await fetch(this._givApi + urlSuffix.trim(), {
+          method: body ? "POST" : "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this._apiToken}`,
+          },
+          body: body ? JSON.stringify(body) : undefined,
+        });
+
+        return ((await retValue.json()) as any)?.data;
+      }
+
+      return data;
     } else {
       throw "Exception calling GivApi: " + (await retValue.text());
     }
@@ -44,7 +61,10 @@ export class Index {
 
     if (typeof regValue.value !== "boolean") {
       console.log("Unexpected value:", regValue);
-      throw "Unexpected output from reading settings register: " + regValue;
+      throw (
+        "Unexpected output from reading settings register: " +
+        JSON.stringify(regValue)
+      );
     }
 
     return regValue.value;
