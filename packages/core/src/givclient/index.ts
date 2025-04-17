@@ -19,8 +19,8 @@ export class Index {
     if (retValue.ok) {
       const data = ((await retValue.json()) as any)?.data;
 
-      // timeout so try a single retry
-      if (data?.value === -1) {
+      // timeout (and no response from server) so try a single retry
+      if (data?.value === -1 || data?.value === -6) {
         const retValue = await fetch(this._givApi + urlSuffix.trim(), {
           method: body ? "POST" : "GET",
           headers: {
